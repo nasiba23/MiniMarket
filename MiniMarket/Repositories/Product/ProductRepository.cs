@@ -3,6 +3,7 @@ using MiniMarket.Db;
 
 namespace MiniMarket.Repositories.Product
 {
+    //структуру подсказали, что так правильно делать 
     public class ProductRepository: IProductRepository
     {
         private DataContext _db;
