@@ -1,6 +1,6 @@
 ﻿@model Product
 @{
-    ViewData["Title"] = "Product add";
+    ViewData["Title"] = "Product update";
     var categories = ViewBag.Categories as List<Category>;
 }
 <form action="Update" method="post" xmlns="http://www.w3.org/1999/html">
@@ -27,7 +27,6 @@
         @foreach (var category in categories)
         {
             <option value=@category.Id>@category.Name</option>
-
         }
     </select>
     <br>

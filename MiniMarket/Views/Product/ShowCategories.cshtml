@@ -1,0 +1,27 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Categories";
+    var categories = ViewBag.Categories as List<Category>;
+}
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var c in categories)
+    {
+        <tr>
+            <th scope="row">@c.Id</th>
+            <td>@c.Name</td>
+            <td>
+                <input type="button" class="btn btn-primary btn-sm" value="Show products" onclick="location.href='@Url.Action("ShowProductsByCategory", "Product")?id=@c.Id'"/>
+            </td>
+            <td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -43,5 +43,17 @@ namespace MiniMarket.Controllers
             _productRep.Delete(id);
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult ShowCategories()
+        {
+            ViewBag.Categories = _db.Categories.ToList();
+            return View();
+        }
+
+        public IActionResult ShowProductsByCategory(long id)
+        { 
+            ViewBag.Products = _productRep.GetByCategory(id);
+            return View();
+        }
     }
 }
