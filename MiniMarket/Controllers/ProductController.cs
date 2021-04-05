@@ -21,10 +21,26 @@ namespace MiniMarket.Controllers
             ViewBag.Categories = _db.Categories.ToList();
             return View();
         }
-
         public IActionResult Add(Product product)
         {
             _productRep.Create(product);
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult ShowUpdate(long id)
+        {
+            ViewBag.Categories = _db.Categories.ToList();
+            var product = _db.Products.FirstOrDefault(p => p.Id == id);
+            return View(product);
+        }
+        public IActionResult Update(Product product)
+        {
+            _productRep.Update(product);
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult Delete(long id)
+        {
+            _productRep.Delete(id);
             return RedirectToAction("Index", "Home");
         }
     }

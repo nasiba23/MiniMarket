@@ -24,6 +24,12 @@
             <td>@product.Name</td>
             <td>@product.Price</td>
             <td>@product.CategoryId</td>
+            <td>
+                <input type="button" class="btn btn-primary btn-sm" value="Edit" onclick="location.href='@Url.Action("ShowUpdate", "Product")?id=@product.Id'"/>
+            </td>
+            <td>
+            <input type="button" class="btn btn-danger btn-sm" value="Delete" onclick="location.href='@Url.Action("Delete", "Product")?id=@product.Id'">
+            </td>
         </tr>
     }
     </tbody>

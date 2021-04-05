@@ -24,5 +24,23 @@ namespace MiniMarket.Repositories.Product
         {
             return _db.Products.ToList();
         }
+
+        public void Update(Models.Product product)
+        {
+            _db.Products.Update(product);
+            _db.SaveChanges();
+        }
+
+        public void Delete(long id)
+        {
+            var product = _db.Products.FirstOrDefault(p=> p.Id == id);
+            _db.Products.Remove(product);
+            _db.SaveChanges();
+        }
+
+        public List<Models.Product> GetByCategory(long id)
+        {
+            return _db.Categories.FirstOrDefault(c => c.Id == id)?.Products;
+        }
     }
 }
