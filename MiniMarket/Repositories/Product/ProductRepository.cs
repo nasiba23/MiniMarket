@@ -40,7 +40,7 @@ namespace MiniMarket.Repositories.Product
 
         public List<Models.Product> GetByCategory(long id)
         {
-            return _db.Categories.FirstOrDefault(c => c.Id == id)?.Products;
+            return _db.Products.Where(p => p.CategoryId == id).ToList();
         }
     }
 }
