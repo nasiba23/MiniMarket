@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MiniMarket.Db;
 
 namespace MiniMarket.Repositories.Product
 {
-    //структуру подсказали, что так правильно делать 
     public class ProductRepository: IProductRepository
     {
         private DataContext _db;
@@ -14,8 +16,13 @@ namespace MiniMarket.Repositories.Product
         }
         public async Task<int> Create(Models.Product model)
         {
-            _db.Products.Add(model);
+            await _db.Products.AddAsync(model);
             return await _db.SaveChangesAsync();
+        }
+
+        public  List<Models.Product> GetAll()
+        {
+            return _db.Products.ToList();
         }
     }
 }

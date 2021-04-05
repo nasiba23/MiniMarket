@@ -6,28 +6,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MiniMarket.Models;
+using MiniMarket.Repositories.Product;
 
 namespace MiniMarket.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IProductRepository _productRep;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProductRepository productRep)
         {
-            _logger = logger;
+            _productRep = productRep;
         }
-
         public IActionResult Index()
         {
-            return View();
+            return View(_productRep.GetAll());
         }
-
         public IActionResult Privacy()
         {
             return View();
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
